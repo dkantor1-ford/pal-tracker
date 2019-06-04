@@ -27,6 +27,11 @@ public class TimeEntryControllerTest {
         controller = new TimeEntryController(timeEntryRepository);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     @Test
     public void testCreate() {
         long projectId = 123L;
@@ -35,6 +40,7 @@ public class TimeEntryControllerTest {
 
         long timeEntryId = 1L;
         TimeEntry expectedResult = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-08"), 8);
+
         doReturn(expectedResult)
             .when(timeEntryRepository)
             .create(any(TimeEntry.class));
